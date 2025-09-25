@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div th:replace="fragments/header :: commonHead('Login')"></div>
+
+  <body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="containerCard">
+      <h1>Login</h1>
+      <form th:action="@{/verifyuser}" method="get" th:object="${user}">
+        <label for="username" class="form-label">Username:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          required
+        />
+        <br />
+        <label for="password" class="form-label">Password:</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          required
+        />
+        <br />
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <a href="/register" class="btn btn-secondary">register</a>
+    </div>
+    <div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="fragments/script :: scripts"></div>
+  </body>
+</html>

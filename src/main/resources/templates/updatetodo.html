@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <div th:replace="fragments/header :: commonHead('Update Todo')"></div>
+
+  <body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <div class="container w-50">
+      <a th:href="@{/home}" class="btn btn-primary">Home</a>
+
+      <form
+        th:action="@{/handleupdatetodo(id=${todo.id})}"
+        th:object="${todo}"
+        method="post"
+        class="mb-3"
+      >
+        <label for="title" class="col-form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          placeholder="Title"
+          th:value="${todo.title}"
+          required
+        />
+        <br />
+        <label for="description" class="col-form-label">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          class="form-control"
+          placeholder="Description"
+          th:text="${todo.description}"
+          required
+        ></textarea>
+        <br />
+        <label for="reminderTime" class="col-form-label">Reminder Time</label>
+        <input
+          type="time"
+          id="reminderTime"
+          class="form-control"
+          name="reminderTime"
+          th:value="${todo.reminderTime}"
+          required
+        />
+        <br />
+        <label for="date" class="col-form-label">Due Date</label>
+        <input
+          type="date"
+          id="date"
+          class="form-control"
+          name="date"
+          th:value="${todo.date}"
+          required
+        />
+        <br />
+
+        <button type="submit" class="btn btn-primary">Update Work</button>
+      </form>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
